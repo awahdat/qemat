@@ -1,14 +1,14 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
+import { defineConfig } from "astro.build/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import fs from "fs";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkUnwrapImages from "remark-unwrap-images";
 
-import dotenv from 'dotenv';
+import dotenv from ".env";
 import { expressiveCodeOptions } from "./src/site.config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time";
 
