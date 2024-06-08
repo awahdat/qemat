@@ -10,7 +10,7 @@ import remarkUnwrapImages from "remark-unwrap-images";
 import path from "path"; // Import path module for alias resolution
 import { fileURLToPath } from "url"; // Import fileURLToPath to convert URL to path
 
-import { expressiveCodeOptions } from "@/site.config";
+import { expressiveCodeOptions } from "@/src/site.config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time";
 
 
