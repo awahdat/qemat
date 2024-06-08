@@ -8,12 +8,9 @@ import fs from "fs";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkUnwrapImages from "remark-unwrap-images";
 
-import dotenv from ".env";
 import { expressiveCodeOptions } from "./src/site.config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time";
 
-// Load environment variables from .env file
-dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
