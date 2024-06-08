@@ -8,10 +8,15 @@ import fs from "fs";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkUnwrapImages from "remark-unwrap-images";
 import path from "path"; // Import path module for alias resolution
+import { fileURLToPath } from "url"; // Import fileURLToPath to convert URL to path
 
 import { expressiveCodeOptions } from "./src/site.config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time";
 
+
+// Get the directory name of the current module file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
