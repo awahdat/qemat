@@ -13,7 +13,7 @@ const isNode = typeof process !== 'undefined' && process.versions != null && pro
 let fs: typeof import('fs');
 
 if (isNode) {
-  fs = await import('node:fs');
+  fs = await import('fs');
 }
 
 // Calls webmention.io api.
@@ -68,15 +68,15 @@ export function filterWebmentions(webmentions: WebmentionsChildren[]) {
 
 // save combined webmentions in cache file
 function writeToCache(data: WebmentionsCache) {
-  const fileContent = JSON.stringify(data, null, 2);
-
-  // create cache folder if it doesn't exist already
-  if (isNode && fs && !fs.existsSync(CACHE_DIR)) {
-    fs.mkdirSync(CACHE_DIR);
-  }
-
-  // write data to cache json file
   if (isNode && fs) {
+    const fileContent = JSON.stringify(data, null, 2);
+
+    // create cache folder if it doesn't exist already
+    if (!fs.existsSync(CACHE_DIR)) {
+      fs.mkdirSync(CACHE_DIR);
+    }
+
+    // write data to cache json file
     fs.writeFile(filePath, fileContent, (err) => {
       if (err) throw err;
       console.log(`Webmentions saved to ${filePath}`);
