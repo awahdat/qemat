@@ -64,19 +64,22 @@ function writeToCache(data: WebmentionsCache) {
 	const fileContent = JSON.stringify(data, null, 2);
 
 	// create cache folder if it doesn't exist already
-	if (!fs.existsSync(CACHE_DIR)) {
-		fs.mkdirSync(CACHE_DIR);
-	}
+	if (typeof window === 'undefined') {
+		// create cache folder if it doesn't exist already
+		if (!fs.existsSync(CACHE_DIR)) {
+			fs.mkdirSync(CACHE_DIR);
+		}
 
-	// write data to cache json file
-	fs.writeFile(filePath, fileContent, (err) => {
-		if (err) throw err;
-		console.log(`Webmentions saved to ${filePath}`);
-	});
+		// write data to cache json file
+		fs.writeFile(filePath, fileContent, (err) => {
+			if (err) throw err;
+			console.log(`Webmentions saved to ${filePath}`);
+		});
+	}
 }
 
 function getFromCache(): WebmentionsCache {
-	if (fs.existsSync(filePath)) {
+	if (typeof window === 'undefined' && fs.existsSync(filePath)) {
 		const data = fs.readFileSync(filePath, "utf-8");
 		return JSON.parse(data);
 	}
